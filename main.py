@@ -18,6 +18,8 @@ OUT = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
 
 os.makedirs(OUT, exist_ok=True)
 # Copy byte-for-byte: the gate judges exactly the committed image.
+# The file is written once by the builder's render step and never
+# regenerated at grade time, so the judged bytes are the committed ones.
 shutil.copyfile(os.path.join(HERE, "entry.png"),
                 os.path.join(OUT, "entry.png"))
 print("wrote", os.path.join(OUT, "entry.png"))
